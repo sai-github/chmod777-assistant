@@ -67,6 +67,11 @@
     "dist"
   ],
   "dependencies": {
+    "@chakra-ui/icons": "^1.0.13",
+    "@chakra-ui/react": "^1.6.2",
+    "@emotion/react": "11",
+    "@emotion/styled": "11",
+    "framer-motion": "4",
     "husky": "4",
     "lint-staged": "^11.0.0"
   }
