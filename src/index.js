@@ -13,12 +13,10 @@ import { ChatIcon } from '@chakra-ui/icons'
 
 import styles from './styles.module.css'
 
-export const ChmodChatComponent = ({ text }) => {
+export const ChmodChatComponent = () => {
   const { isOpen, onToggle } = useDisclosure()
   return (
     <ChakraProvider>
-      <div className={styles.test}>Example Component: {text}</div>
-      {/* <Box className={styles.chatIcon}>Test</Box> */}
       <Circle className={styles.chatIcon} onClick={onToggle}>
         <ChatIcon />
       </Circle>
@@ -33,6 +31,7 @@ export const ChmodChatComponent = ({ text }) => {
           shadow='md'
           direction='column'
           justifyContent='space-between'
+          zIndex='2147483000'
         >
           <Stack direction='column' backgroundColor='teal.500' spacing={2}>
             <Text>Your App name</Text>
