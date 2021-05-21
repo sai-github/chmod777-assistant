@@ -6,4 +6,19 @@
   border: 2px solid #000;
   font-size: 2em;
   text-align: center;
+  color: blue;
+}
+
+.chatIcon {
+  position: fixed;
+  z-index: 2147483000;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #319795;
+  cursor: pointer;
+  box-shadow: 0 1px 6px 0 rgb(0 0 0 / 6%), 0 2px 32px 0 rgb(0 0 0 / 16%);
+  animation: intercom-lightweight-app-launcher 250ms ease;
 }

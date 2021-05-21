@@ -1,7 +1,7 @@
-import { ExampleComponent } from '.'
+import { ChmodChatComponent } from '.'
 
-describe('ExampleComponent', () => {
+describe('ChmodChatComponent', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
+    expect(ChmodChatComponent).toBeTruthy()
   })
 })
