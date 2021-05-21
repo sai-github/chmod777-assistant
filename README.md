@@ -25,6 +25,18 @@ class Example extends Component {
 }
 ```
 
+## Develop
+
+Running package builds
+
+- `cd chmod777-assistant`
+- `yarn start`
+
+Running example app to test the component/package
+
+- `cd example`
+- `yarn start`
+
 ## License
 
 MIT © [sai-github](https://github.com/sai-github)
