@@ -13,7 +13,6 @@
     "chmod777-assistant": "link:..",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
-    "react-router-dom": "link:../node_modules/react-router-dom",
     "react-scripts": "link:../node_modules/react-scripts"
   },
   "devDependencies": {
