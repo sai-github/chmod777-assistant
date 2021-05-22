@@ -11,7 +11,7 @@ import {
   Flex,
   Heading
 } from '@chakra-ui/react'
-import { ChatIcon } from '@chakra-ui/icons'
+import { ChatIcon, CloseIcon } from '@chakra-ui/icons'
 
 import styles from './styles.module.css'
 import Landing from './components/Landing/Landing'
@@ -38,7 +38,7 @@ export const ChmodChatComponent = ({ chatProps }) => {
   return (
     <ChakraProvider>
       <Circle className={styles.chatIcon} onClick={onToggle}>
-        <ChatIcon />
+        {!isOpen ? <ChatIcon color='white' /> : <CloseIcon color='white' />}
       </Circle>
       {isOpen && (
         <Fade in={isOpen}>
