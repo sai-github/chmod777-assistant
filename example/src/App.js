@@ -5,7 +5,9 @@ import 'chmod777-assistant/dist/index.css'
 
 const App = () => {
   const chatProps = {
-    appName: 'Dummy'
+    appName: 'Dummy',
+    sessionToken: process.env.REACT_APP_SESSION_TOKEN,
+    botToken: process.env.REACT_APP_BOT_TOKEN
   }
 
   return (

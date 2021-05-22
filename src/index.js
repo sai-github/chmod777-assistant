@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import axios from 'axios'
+
 import {
   ChakraProvider,
   Circle,
@@ -18,6 +20,10 @@ import RealtimeChatbox from './components/RealtimeChatBox/RealtimeChatbox'
 import { routes } from './constants'
 
 export const ChmodChatComponent = ({ chatProps }) => {
+  axios.defaults.baseURL = process.env.REACT_APP_CHMOD
+  // eslint-disable-next-line dot-notation
+  axios.defaults.headers.common['Authorization'] = chatProps.sessionToken
+
   const [activeRoute, setActiveRoute] = useState(routes.LANDING)
   const { isOpen, onToggle } = useDisclosure()
 
