@@ -71,7 +71,9 @@
     "@chakra-ui/react": "^1.6.2",
     "@emotion/react": "11",
     "@emotion/styled": "11",
+    "axios": "^0.21.1",
     "framer-motion": "4",
+    "html2canvas": "^1.0.0-rc.7",
     "husky": "4",
     "lint-staged": "^11.0.0"
   }
