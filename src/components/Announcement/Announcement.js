@@ -1,7 +1,29 @@
-import React from 'react'
-import { Box, Stack, Text, Heading } from '@chakra-ui/react'
+import React, { useEffect, useState } from 'react'
+import { Box, Stack, Text, Heading, Badge } from '@chakra-ui/react'
+import axios from 'axios'
 
 const Announcement = () => {
+  const [anno, setAnno] = useState([])
+
+  useEffect(() => {
+    axios
+      .get('api/announcement')
+      .then((res) => {
+        setAnno(
+          res.data.data.sort(function (a, b) {
+            return (
+              new Date(b.activeTill).getDay() - new Date(a.activeTill).getDay()
+            )
+          })
+        )
+      })
+      .catch((e) => console.error(e))
+  }, [])
+
+  const checkNew = (item) => {
+    return new Date(item).getDay() >= new Date().getDay()
+  }
+
   return (
     <Box
       boxShadow='md'
@@ -15,14 +37,23 @@ const Announcement = () => {
         Announcements
       </Text>
       <Stack spacing={4} mt={4}>
-        <Box p={5} borderWidth='1px' borderRadius={4}>
-          <Heading fontSize='md'>Title 1</Heading>
-          <Text mt={4}>dasdas dasd asd da dsada</Text>
-        </Box>
-        <Box p={5} borderWidth='1px' borderRadius={4}>
-          <Heading fontSize='md'>Title 2</Heading>
-          <Text mt={4}> dasdad asdadas dasdadad </Text>
-        </Box>
+        {anno.length &&
+          anno.map((i) => (
+            <Box key={i._id} p={5} borderWidth='1px' borderRadius={4}>
+              <Stack direction='row'>
+                <Heading fontSize='sm'>{i.title}</Heading>
+                {checkNew(i.activeTill) && (
+                  <Badge size='xs' colorScheme='green'>
+                    NEW
+                  </Badge>
+                )}
+              </Stack>
+
+              <Text fontSize='sm' mt={4}>
+                {i.message}
+              </Text>
+            </Box>
+          ))}
       </Stack>
     </Box>
   )
