@@ -9,13 +9,14 @@ import {
   InputRightElement,
   IconButton,
   useToast,
-  Stack
+  Stack,
+  Tag
 } from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons'
 
 const FaqSearch = () => {
   const toast = useToast()
-  const [searchKey, setSearckKey] = useState([])
+  const [searchKey, setSearckKey] = useState('')
   const [faq, setFaq] = useState([])
   const [filteredFaq, setFilteredFaq] = useState([])
 
@@ -29,11 +30,12 @@ const FaqSearch = () => {
   }, [])
 
   const onSearch = () => {
+    console.log('searchKey', searchKey)
     const ans = faq.filter((item) => {
       if (
-        (item.question.includes(searchKey) ||
-          item.answer.includes(searchKey) ||
-          item.category.includes(searchKey)) &&
+        (item.question.toLowerCase().includes(searchKey.toLowerCase()) ||
+          item.answer.toLowerCase().includes(searchKey.toLowerCase()) ||
+          item.category.toLowerCase().includes(searchKey.toLowerCase())) &&
         item.isActiveFaq
       ) {
         return true
@@ -41,6 +43,8 @@ const FaqSearch = () => {
 
       return false
     })
+    console.log(faq)
+    console.log(ans)
     setFilteredFaq(ans)
 
     if (!ans.length) {
@@ -70,7 +74,7 @@ const FaqSearch = () => {
           pr='4.5rem'
           type='text'
           placeholder='Start typing'
-          onChange={(e) => setSearckKey(e)}
+          onChange={(e) => setSearckKey(e.target.value)}
         />
         <InputRightElement>
           <IconButton size='xs' icon={<SearchIcon />} onClick={onSearch} />
@@ -79,7 +83,12 @@ const FaqSearch = () => {
       {filteredFaq.length > 0 &&
         filteredFaq.map((i) => (
           <Stack key={i._id} spacing={2} mt={4}>
-            <Text fontSize='sm'>Q: {i.question}</Text>
+            <Text fontSize='sm'>
+              Q: {i.question}{' '}
+              <Tag size='xs' fontSize='12px' variant='solid' colorScheme='teal'>
+                {i.category}
+              </Tag>
+            </Text>
             <Text fontSize='sm' fontWeight='light'>
               A: {i.answer}
             </Text>
