@@ -12,7 +12,8 @@ const Announcement = () => {
         setAnno(
           res.data.data.sort(function (a, b) {
             return (
-              new Date(b.activeTill).getDay() - new Date(a.activeTill).getDay()
+              new Date(b.activeTill).getDate() -
+              new Date(a.activeTill).getDate()
             )
           })
         )
@@ -21,7 +22,7 @@ const Announcement = () => {
   }, [])
 
   const checkNew = (item) => {
-    return new Date(item).getDay() >= new Date().getDay()
+    return new Date(item).getDate() >= new Date().getDate()
   }
 
   return (
